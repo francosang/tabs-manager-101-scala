@@ -29,8 +29,7 @@ object Main extends TyrianIOApp[Action, Model]:
   def init(flags: Map[String, String]): (Model, Cmd[IO, Action]) =
     (
       Model.Tabs(Tab.dummyTabsList),
-      // Cmd.Run(browser.query())(it => Action.TabsLoaded(it)),
-      Cmd.None
+      Cmd.Run(browser.query())(it => Action.TabsLoaded(it))
     )
 
   def update(model: Model): Action => (Model, Cmd[IO, Action]) =

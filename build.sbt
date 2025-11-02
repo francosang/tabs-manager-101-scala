@@ -18,8 +18,7 @@ npmStart := {
 
 lazy val start = taskKey[Unit]("Start live compile and frontend dev server")
 start := {
-  npmStart.value
-  (Compile / fastLinkJS).value
+  npmStart.dependsOn(Compile / fastLinkJS).value
 }
 
 lazy val `app-tyrian-template` =
@@ -29,7 +28,7 @@ lazy val `app-tyrian-template` =
       name := "tyrian-template-poc",
       libraryDependencies ++= Seq(
         "io.indigoengine" %%% "tyrian-io" % "0.10.0",
-        "org.scalameta"   %%% "munit"     % "0.7.29" % Test
+        "org.scalameta"   %%% "munit"     % "1.0.4" % Test
       ) ++ Seq(
         "io.circe" %%% "circe-core",
         "io.circe" %%% "circe-parser",

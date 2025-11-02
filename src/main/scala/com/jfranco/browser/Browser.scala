@@ -8,6 +8,7 @@ trait Browser {
   def query(): IO[List[Tab]]
 
   def query(queryInfo: TabQuery): IO[List[Tab]]
+
 }
 
 object Browser {
@@ -17,6 +18,6 @@ object Browser {
 
     override def query(queryInfo: TabQuery): IO[List[Tab]] = ChromeBrowser
       .query(ChromeTabQuery(queryInfo))
-      .flatMap(chromeTab => IO(chromeTab.map(ChromeTab.apply).toList))
+      .map(chromeTab => chromeTab.map(ChromeTab.apply).toList)
 
 }

@@ -16,7 +16,7 @@ object CommonSettingsPlugin extends AutoPlugin {
   override def projectConfigurations: Seq[Configuration] = Seq.empty
 
   override def projectSettings: Seq[Def.Setting[?]] = Seq(
-    scalaVersion      := "3.3.1",
+    scalaVersion      := "3.3.6",
     scalafixOnCompile := true,
     version           := "0.0.1",
     organization      := "com.jfranco",
